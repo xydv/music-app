@@ -1,0 +1,57 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Music App",
+    "dateExported": "2024-01-02T09:53:03.794Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "951b247d-a51d-4015-8431-58154aeb87f0",
+            "colId": "d0a86c80-8e31-40dd-8d4c-9e7074f7c577",
+            "containerId": "",
+            "name": "get homepage results",
+            "url": "http://localhost:3000/home",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-02T09:51:14.701Z",
+            "modified": "2024-01-02T09:51:14.701Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1eb8b4e2-0597-4043-a530-db3a98f9e6b9",
+            "colId": "d0a86c80-8e31-40dd-8d4c-9e7074f7c577",
+            "containerId": "",
+            "name": "get search result",
+            "url": "http://localhost:3000/search?q=mukammal",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-02T09:51:54.791Z",
+            "modified": "2024-01-02T09:52:12.741Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "q",
+                    "value": "mukammal",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "4dc3e0a1-00c3-4720-9eb6-e09f4184965e",
+            "colId": "d0a86c80-8e31-40dd-8d4c-9e7074f7c577",
+            "containerId": "",
+            "name": "get song data by id",
+            "url": "http://localhost:3000/song/huf6ylaP",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-01-02T09:52:31.903Z",
+            "modified": "2024-01-02T09:52:53.103Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
