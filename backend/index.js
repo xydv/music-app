@@ -1,11 +1,15 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
+
+app.use(cors());
 
 app.get("/home", async ({ res }) => {
   let {
-    data: { albums },
+    data: { playlists },
   } = await (await fetch(`https://saavn.me/modules?language=hindi`)).json();
-  res.json(albums);
+  res.json(playlists);
 });
 
 app.get("/search", async (req, res) => {
@@ -15,6 +19,15 @@ app.get("/search", async (req, res) => {
     data: { results },
   } = await (await fetch(`https://saavn.me/search/songs?query=${q}`)).json();
   res.json(results);
+});
+
+app.get("/playlist", async (req, res) => {
+  let { id } = req.query;
+  if (!id) return res.status(404).json({ message: "please enter a id" });
+  let { data } = await (
+    await fetch(`https://saavn.me/playlists?id=${id}`)
+  ).json();
+  res.json(data);
 });
 
 app.get("/song/:id", async (req, res) => {
