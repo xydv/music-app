@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="spotify.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="icon" href="svgs/favicon.ico">
+
+</head>
+
+<body class="bg_black">
+    <div class="container flex bg_black">
+        <div class="left m-1">
+            <div class="home bg_grey border p-2 m-1 mar-bot">
+                <div class="logo invert"><img src="svgs/logo.svg" alt="Logo"></div>
+                <ul>
+                    <li><img class="invert" src="svgs/home.svg" alt="Home">Home</li>
+                    <li><img class="invert" src="svgs/search.svg" alt="search">Search</li>
+                </ul>
+            </div>
+            <div class="library bg_grey border  m-1">
+                <nav class="flex align_item gap ">
+                    <div class="lib-img flex align_item gap">
+                        <img class="invert align_item " src="svgs/library.svg" alt="">
+                        Your Library
+                    </div>
+                    <div class="plus flex  gap">
+                        <img class="lib-icon invert circle" src="svgs/plus.svg" alt="">
+                        <img class=" lib-icon invert circle" src="svgs/rightarrow.svg" alt="">
+                    </div>
+                </nav>
+                <div class="sg-name ">
+                    <ul>
+                        <!-- <li>
+                <div class="container-lib-sg flex align_item "><div class="lib-sg-1 flex align_item gap">
+                <img class="invert " src="svgs/songleft.svg" alt="">
+                    </div>
+                <div class="lib-sg-2 flex">
+                    <span>Song name</span>
+                    <span>Artist name</span>
+                </div>
+                <div class="lib-sg-3 flex align_item ">
+                    <div>Play now</div>
+                    <img class="invert" src="svgs/playleft.svg" alt="">
+                </div></div>
+            </li> -->
+                    </ul>
+                </div>
+                <!-- <footer class="lib-foot">
+                <span>Legal</span>
+                <span>Privacy center</span>
+                <span>Privacy policy</span>
+                <span>Cookies</span>
+                <span>About Ads</span>
+                <span>Accessibility</span>
+                <span>Cookies</span>
+            </footer> -->
+            </div>
+        </div>
+        <div class="right border bg_grey ">
+            <nav class="flex align_item ">
+                <div class="img-nav-right flex gap">
+                    <img class="img-nav-right-1 invert circle " src="svgs/back.svg" alt="back">
+                    <img class="img-nav-right-1 invert circle " src="svgs/forward.svg" alt="forward">
+                </div>
+                <div class="but ">
+                    <button class="but-nav-1 ">Sign up</button>
+                    <button class="but-nav-2 ">Log in</button>
+                </div>
+            </nav>
+            <div class="cov"></div>
+            <div class="spot-plalist">
+                <h2 class="p-1">Trending Playlist's</h2>
+                <div id="container" class="card-container p-1 flex gap"></div>
+            </div>
+        </div>
+        <div class="player ">
+            <div class="seekbar flex">
+                <div class="seekbar-circle flex"></div>
+            </div>
+            <div class="abovebar flex">
+                <div class="songinfo"></div>
+
+                <div class="control flex justify_content gap-1">
+                    <img class="cen-1 invert " src="svgs/centerleft.svg" alt="">
+                    <img id="previous" class="cen-11 wd invert" src="svgs/playback.svg" alt="">
+                    <img id="play" class="cen-11 wd circle-w" src="svgs/play.svg" alt="">
+                    <img id="next" class="cen-11 wd invert" src="svgs/playforward.svg" alt="">
+                    <img class="cen-2 invert " src="svgs/centerright.svg" alt="">
+
+
+                </div>
+
+
+                <div>
+                    <div class="timevol">
+                        <div class="songtime"></div>
+                        <div class="volume">
+                            <div>
+                                <button class="vol-butt" type="button">
+                                    <img class="vol-icon" src="svgs/speaker.png" alt="">
+                                </button>
+                            </div>
+                            <div class="range">
+                                <input type="range" name="volume" min="0" max="100"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="songtime">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
