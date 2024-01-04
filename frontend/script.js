@@ -112,6 +112,9 @@ async function main() {
   // spacebar event to play/pause music
   window.addEventListener("keydown", (e) => {
     if (e.keyCode == 32) {
+      if (e.target == inputsong) {
+        return;
+      }
       e.preventDefault();
       play.click();
     } else if (e.keyCode == 37) {
@@ -164,30 +167,32 @@ next.addEventListener("click", () => {
 });
 
 //Add an event on search
-document.querySelector(".search").addEventListener("click",()=>{
-  console.log('Search clicked');
+document.querySelector(".search").addEventListener("click", () => {
+  console.log("Search clicked");
   const input = document.querySelector(".nav-input input");
-  input.style.display = (input.style.display === 'none' || input.style.display === '') ? 'block' : 'none';
-  
-})
+  input.style.display =
+    input.style.display === "none" || input.style.display === ""
+      ? "block"
+      : "none";
+});
 
-inputsong.addEventListener("input",async(e)=>{
-console.log(e.target.value)
-let response = await fetch(`http://localhost:3000/search?q=${e.target.value}`);
-let songs = await response.json();
-console.log(songs)
-let songUL = document.querySelector("#container");
-songUL.innerHTML=""
-for (const song of songs) {
-
-  songUL.innerHTML += `<div class="card border">
+inputsong.addEventListener("input", async (e) => {
+  if (!e.target.value.trim()) return;
+  let response = await fetch(
+    `http://localhost:3000/search?q=${e.target.value}`
+  );
+  let songs = await response.json();
+  console.log(songs);
+  let songUL = document.querySelector("#container");
+  songUL.innerHTML = "";
+  for (const song of songs) {
+    songUL.innerHTML += `<div class="card border">
           <img class="border" src="${song.image[1].link}" alt="playlist">
           <img onclick="playMusic('${song.downloadUrl[4].link}', '${song.name}',' ${song.image[1].link}')" class="circle-g" src="svgs/play.svg" alt="">
           <h4>${song.name}</h4>
           <p>${song.primaryArtists}</p>
       </div>`;
-}
-})
-
+  }
+});
 
 main();
