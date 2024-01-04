@@ -58,7 +58,7 @@ const fetchPlaylist = async (id) => {
   for (const song of songs) {
     songUL.innerHTML =
       songUL.innerHTML +
-      `<li onclick="playMusic('${song.downloadUrl[4].link}', '${song.name}',' ${song.image[1].link}')">
+      `<li class="playnash" onclick="playMusic('${song.downloadUrl[4].link}', '${song.name}',' ${song.image[1].link}')">
     <div class="container-lib-sg flex align_item gap"><div class="lib-sg-1 flex align_item gap">
     <img style="width: 40px" src="${song.image[1].link}" alt="">
         </div>
@@ -71,6 +71,8 @@ const fetchPlaylist = async (id) => {
     </div>
 </li>`;
   }
+
+
 };
 
 async function main() {
@@ -85,6 +87,8 @@ async function main() {
             <p>${song.subtitle}</p>
         </div>`;
   }
+
+  document.getElementsByClassName("circle-g")[0].click()
 
   // Attach an event to play if pause and pause if play
   play.addEventListener("click", () => {
