@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0px;
     font-family: 'Roboto', sans-serif;
@@ -9,58 +10,60 @@ img {
     width: 50px;
     border-radius: 8px;
 }
-.left{
+
+.left {
     width: 30vw;
-    
+
 }
-.right{
+
+.right {
     width: 70vw;
     margin: 10px;
     margin-left: 5px;
     position: relative;
 }
-.home ul li{
+
+.home ul li {
     display: flex;
     align-items: center;
     gap: 15px;
     padding-top: 10px;
 }
-.library{
+
+.library {
     height: 62vh;
     padding: 3px;
     /* height: 100%; */
 }
-.library nav{
+
+.library nav {
     justify-content: space-between;
     padding: 15px;
 }
-.lib-icon{
+
+.lib-icon {
     width: 30px;
 }
 
-.circle{
+.circle {
     /* height: 40px; */
-    width: 18px !important ;
+    width: 18px !important;
     padding: 5px;
     border-radius: 50px;
     background-color: #cdcece;
     /* filter: invert(0) !important; */
 }
-.right nav{
+
+.right nav {
     background-color: #101010;
     border-radius: 10px;
     padding: 22px 20px;
-    /* justify-content: space-between; */
-    gap: 150px;
-    position:relative;
+    justify-content: space-between;
+    position: relative;
     z-index: 1;
 }
-.nav-input input{
-    padding: 13px 80px 13px 10px;
-    font-size: 20px;
-    display: none;
-}
-.cov{
+
+.cov {
     position: absolute;
     /* z-index: 2; */
     top: 45px;
@@ -69,18 +72,20 @@ img {
     padding: 9.8px;
     background-color: #101010;
 }
-.but-nav-1{
+
+.but-nav-1 {
     background-color: #101010;
     border: 0;
     color: white;
     border-radius: 38px;
     font-size: 15px;
-    position : absolute;
+    position: absolute;
     padding: 15px 35px;
     top: 10px;
     right: 140px;
 }
-.but-nav-2{
+
+.but-nav-2 {
     background-color: white;
     font-size: 15px;
     border: 0;
@@ -90,13 +95,15 @@ img {
     right: 20px;
     top: 10px;
 }
-.but-nav-2:hover{
+
+.but-nav-2:hover {
     position: absolute;
     right: 19px;
     font-size: 16px;
     top: 9px;
     padding: 16px 36px
 }
+
 .but-nav-1:hover {
     position: absolute;
     font-size: 16px;
@@ -108,26 +115,29 @@ img {
 
 /* playlist cards */
 
-.card-container{
+.card-container {
     flex-wrap: wrap;
     margin: 10px;
     height: 70vh;
     overflow-y: scroll;
 }
 
-.card{
+.card {
     height: 19em;
     width: 160px;
     background-color: #111111;
-    padding: 13px ;
+    padding: 13px;
     font-size: 13px;
     position: relative;
 }
-.card > *{
+
+.card>* {
     padding-bottom: 10px;
 }
-.circle-g{
-    width: 18px !important ;
+
+.circle-g {
+    cursor: pointer;
+    width: 18px !important;
     padding: 15px 15px 15px 15px !important;
     border-radius: 50px;
     background-color: #3aa72c;
@@ -138,35 +148,38 @@ img {
     /* opacity: 0; */
     transition: all 1s ease-out;
 }
-.circle-w{
+
+.circle-w {
     width: 25px !important;
     padding: 9px 9px 9px 10px !important;
     border-radius: 50px;
     background-color: #ffffff;
 
 }
-.circle-w-left{
-    width: 15px !important ;
+
+.circle-w-left {
+    width: 15px !important;
     padding: 15px 15px 15px 15px !important;
     border-radius: 50px;
     background-color: #ffffff;
 
 }
 
-    .card :first-child{
+.card :first-child {
     width: 93%;
     object-fit: contain;
     /* padding-top: 0px; */
     padding: 5px;
     position: relative;
 }
-.card p{
+
+.card p {
     overflow: hidden;
 }
 
 /* player */
 
-.player{
+.player {
     /* height: 90px; */
     width: 100%;
     /* margin: 10px ; */
@@ -174,18 +187,21 @@ img {
     padding: 20px 0px;
     background-color: rgb(0, 0, 0);
     /* background-color: rgb(0, 225, 255); */
-    position:fixed;
+    position: fixed;
     bottom: -5px;
 }
-.cen-1{
+
+.cen-1 {
     padding-right: 30px;
     width: 20px !important;
 }
-.cen-2{
+
+.cen-2 {
     padding-left: 30px;
     width: 20px !important;
 }
-.seekbar{
+
+.seekbar {
     height: 2px;
     width: 50%;
     background-color: white;
@@ -198,21 +214,25 @@ img {
     bottom: 10px;
     cursor: pointer;
 }
-.seekbar-circle{
+
+.seekbar-circle {
     height: 10px;
     width: 10px;
     border-radius: 10px;
     background-color: white;
     position: absolute;
-    bottom: -4px;transition: left 0.5s ;
+    bottom: -4px;
+    transition: left 0.5s;
     left: 0%;
 
     /* top: 1px; */
 }
+
 .lib-sg-1 {
     margin-left: 7px;
 }
-.lib-foot{
+
+.lib-foot {
     /* width: 10px; */
     padding: 5px;
     display: flex;
@@ -223,7 +243,8 @@ img {
     font-size: 11px;
     color: #cdcece;
 }
-.sg-name{
+
+.sg-name {
     margin: 5px;
     margin-bottom: 0px;
     height: 51vh;
@@ -231,78 +252,120 @@ img {
     border-radius: 3%;
     /* padding: 10px; */
 }
+
 .sg-name ul {
     display: flex;
     flex-wrap: wrap;
 }
 
-.sg-name ul li{
+.sg-name ul li {
     list-style-type: none;
     height: 55px;
     width: 100%;
     font-size: 10px;
-    padding:3px 5px ;
-    margin: 5px ;
+    padding: 3px 5px;
+    margin: 5px;
     border: 1px solid black;
     cursor: pointer;
     border-radius: 5px;
     /* display: flex;
     justify-content: space-between; */
 }
-.container-lib-sg{
+
+.container-lib-sg {
     justify-content: space-between;
     height: 100%;
 }
-.lib-sg-2{
+
+.lib-sg-2 {
     column-gap: 5px;
     width: 68%;
     flex-wrap: wrap;
 }
-.lib-sg-2 span:first-child{
+
+.lib-sg-2 span:first-child {
     font-size: 13px;
     width: 100%;
     padding-bottom: 5px;
 }
-.lib-sg-3{
+
+.lib-sg-3 {
     gap: 5px;
 }
-.cen-11{
+
+.cen-11 {
     cursor: pointer;
 }
-.control{
+
+.control {
     margin: 1px 1px 10px 1px;
     padding: 1px 1px 10px 1px;
 }
-.songtime{
+
+.songtime {
     color: white;
     width: 200px;
     text-align: center;
 }
-.songinfo{
+
+.songinfo {
     color: white;
     width: 200px;
     text-align: center;
 }
-.abovebar{
+
+.abovebar {
     align-items: center;
     justify-content: space-between;
     padding: 0px 20px;
 }
 
-.songinfo-div{
+.songinfo-div {
     display: flex;
     justify-content: space-around;
     width: 300px;
     align-items: center;
-    
 
-    
+
+
 }
-.range{
+
+.range {
     display: flex;
     align-self: center;
     margin-top: 10px;
 }
+
+.volume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.vol-icon {
+    filter: invert(1);
+    width: 24px;
+    margin-top: 2px;
+}
+
+.vol-butt {
+    background: none;
+    border: none;
+    transition: 0.2s ease-in-out;
+    margin-top: 10px;
+    padding: 4px 7px;
+    border-radius: 50%;
+}
+
+.vol-butt:hover {
+    background-color: grey;
+}
+
+.range {
+    display: flex;
+}
+
 .volume {
     display: flex;
     align-items: center;
@@ -311,13 +374,9 @@ img {
 }
 
 input[type="range"] {
-    background: linear-gradient(to right, #fff 0%, #fff 50%, #fff 50%, #fff 100%);
-    border: solid 1px #82CFD0;
-    outline: none;
     -webkit-appearance: none;
     width: 70%;
-    margin : 0 10px;
-    border-radius: 50%;
+    margin: 0 10px;
 }
 
 input[type="range"]:focus {
@@ -342,92 +401,4 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     margin-top: -6px;
     /* display: none; */
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-    background: #e40e0e;
-}
-
-input[type="range"]::-moz-range-track {
-    width: 90%;
-    height: 8px;
-    cursor: pointer;
-    background: #cc0707;
-    border-radius: 15px;
-    border: 1px solid #ad1414;
-}
-
-input[type="range"]::-moz-range-thumb {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
-}
-
-input[type="range"]::-ms-track {
-    width: 100%;
-    height: 8px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-}
-
-.home ul button {
-    color: #101010;
-    }
-
-input[type="range"]::-ms-fill-lower {
-    background: #c00b0b;
-    border: 1px solid #cc0909;
-    border-radius: 10px;
-}
-
-input[type="range"]::-ms-fill-upper {
-    background: #d4cece;
-    border: 1px solid #aaa;
-    border-radius: 10px;
-}
-
-input[type="range"]::-ms-thumb {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
-}
-
-input[type="range"]:focus::-ms-fill-lower {
-    background: #3509e6;
-}
-
-input[type="range"]:focus::-ms-fill-upper {
-    background: #dd08dd;
-}
-
-
-
-.vol-icon{
-    filter: invert(1);
-    width: 24px;
-    margin-top: 2px;
-  
-}
-.vol-butt{
-
-    background: none;
-    border: none;
-    transition: 0.2s ease-in-out;
-    margin-top: 10px;
-    padding: 4px 7px;
-    border-radius: 50%;
-
-}
-.vol-butt:hover{
-   
-
-    background-color: grey;
-
-    
 }
