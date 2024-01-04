@@ -37,6 +37,7 @@ img {
 .lib-icon{
     width: 30px;
 }
+
 .circle{
     /* height: 40px; */
     width: 18px !important ;
@@ -49,9 +50,15 @@ img {
     background-color: #101010;
     border-radius: 10px;
     padding: 22px 20px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 150px;
     position:relative;
     z-index: 1;
+}
+.nav-input input{
+    padding: 13px 80px 13px 10px;
+    font-size: 20px;
+    display: none;
 }
 .cov{
     position: absolute;
@@ -366,6 +373,10 @@ input[type="range"]::-ms-track {
     border-color: transparent;
     color: transparent;
 }
+
+.home ul button {
+    color: #101010;
+    }
 
 input[type="range"]::-ms-fill-lower {
     background: #c00b0b;

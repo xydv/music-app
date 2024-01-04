@@ -143,4 +143,17 @@ button.addEventListener("click", () => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var button = document.getElementById('toggleButton');
+    var inputFieldContainer = document.getElementById('inputFieldContainer');
+
+    if (button && inputFieldContainer) {
+        button.addEventListener('click', function() {
+            inputFieldContainer.style.display = inputFieldContainer.style.display === 'none' ? 'block' : 'none';
+        });
+    } else {
+        console.log('Button or input field container not found');
+    }
+});
+
 main();
