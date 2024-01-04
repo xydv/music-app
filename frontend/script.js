@@ -1,5 +1,5 @@
 let currentSong = new Audio();
-
+let inputsong = document.getElementById("songinput");
 let songsarr = [];
 
 function secondsToMMSS(seconds) {
@@ -109,7 +109,6 @@ async function main() {
 
   // spacebar event to play/pause music
   window.addEventListener("keydown", (e) => {
-    console.log(e);
     if (e.keyCode == 32) {
       e.preventDefault();
       play.click();
@@ -161,5 +160,32 @@ next.addEventListener("click", () => {
     playMusic(songtbp.url, songtbp.name, songtbp.image);
   }
 });
+
+//Add an event on search
+document.querySelector(".search").addEventListener("click",()=>{
+  console.log('Search clicked');
+  const input = document.querySelector(".nav-input input");
+  input.style.display = (input.style.display === 'none' || input.style.display === '') ? 'block' : 'none';
+  
+})
+
+inputsong.addEventListener("input",async(e)=>{
+console.log(e.target.value)
+let response = await fetch(`http://localhost:3000/search?q=${e.target.value}`);
+let songs = await response.json();
+console.log(songs)
+let songUL = document.querySelector("#container");
+songUL.innerHTML=""
+for (const song of songs) {
+
+  songUL.innerHTML += `<div class="card border">
+          <img class="border" src="${song.image[1].link}" alt="playlist">
+          <img onclick="playMusic('${song.downloadUrl[4].link}', '${song.name}',' ${song.image[1].link}')" class="circle-g" src="svgs/play.svg" alt="">
+          <h4>${song.name}</h4>
+          <p>${song.primaryArtists}</p>
+      </div>`;
+}
+})
+
 
 main();
