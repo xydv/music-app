@@ -21,12 +21,20 @@ async function getSongs() {
 }
 
 const playMusic = (track, name, image, pause = false) => {
+  console.log(track, name, image);
   currentSong.src = track;
   if (!pause) {
     currentSong.play();
     play.src = "/svgs/pause.svg";
   }
-
+  localStorage.setItem(
+    "lastSongPlayed",
+    JSON.stringify({
+      track,
+      name,
+      image,
+    })
+  );
   document.querySelector(".songinfo").innerHTML = `<div class="songinfo-div"> 
   <div> <img style="width : 70px" src="${image}" alt="img description"> </div> 
  <div>${name} </div>
@@ -92,6 +100,8 @@ async function main() {
 
   // listen for timeupdate event
   currentSong.addEventListener("timeupdate", () => {
+    localStorage.setItem("lastSongPlayedTime", currentSong.currentTime);
+    localStorage.setItem("lastSongDuration", currentSong.duration);
     // console.log(currentSong.currentTime, currentSong.duration);
     // document.querySelector(".songtime").innerHTML = ;
     document.querySelector(".songtime").innerHTML = `${secondsToMMSS(
@@ -99,6 +109,10 @@ async function main() {
     )} / ${secondsToMMSS(currentSong.duration)}`;
     document.querySelector(".seekbar-circle").style.left =
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
+
+    if (currentSong.currentTime == currentSong.duration) {
+      next.click();
+    }
   });
 
   document.querySelector(".seekbar").addEventListener("click", (e) => {
@@ -130,7 +144,13 @@ async function main() {
 let slider = document.querySelector(".range").getElementsByTagName("input")[0];
 
 slider.oninput = function () {
+  localStorage.setItem("volume", this.value);
   currentSong.volume = parseInt(this.value) / 100;
+  if (currentSong.volume) {
+    volicon.src = "/svgs/unmute.svg";
+  } else {
+    volicon.src = "/svgs/mute.svg";
+  }
 };
 
 let volbutton = document.querySelector(".vol-butt");
@@ -141,10 +161,12 @@ volbutton.addEventListener("click", () => {
   if (currentSong.volume) {
     volicon.src = "/svgs/mute.svg";
     currentSong.volume = 0;
+    localStorage.setItem("volume", 0);
     slider.value = 0;
   } else {
     volicon.src = "/svgs/unmute.svg";
     currentSong.volume = 1;
+    localStorage.setItem("volume", 100);
     slider.value = 100;
   }
 });
@@ -196,3 +218,27 @@ inputsong.addEventListener("input", async (e) => {
 });
 
 main();
+
+window.addEventListener("load", () => {
+  let savedSong = JSON.parse(localStorage.getItem("lastSongPlayed"));
+  playMusic(savedSong.track, savedSong.name, savedSong.image);
+
+  let lastTimer = parseFloat(localStorage.getItem("lastSongPlayedTime"));
+  let lastSongDuration = parseFloat(localStorage.getItem("lastSongDuration"));
+
+  document.querySelector(".seekbar-circle").style.left =
+    (lastTimer / lastSongDuration) * 100 + "%";
+
+  currentSong.currentTime = lastSongDuration * (lastTimer / lastSongDuration);
+
+  play.src = "/svgs/play.svg";
+
+  currentSong.volume = parseInt(localStorage.getItem("volume")) / 100;
+  slider.value = localStorage.getItem("volume");
+
+  if (localStorage.getItem("volume") == 0) {
+    volicon.src = "/svgs/mute.svg";
+  } else {
+    volicon.src = "/svgs/unmute.svg";
+  }
+});
