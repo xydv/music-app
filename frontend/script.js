@@ -1,5 +1,7 @@
 let currentSong = new Audio();
 
+let songsarr = [];
+
 function secondsToMMSS(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
@@ -22,13 +24,6 @@ const playMusic = (track, name, image, pause = false) => {
     currentSong.play();
     play.src = "/svgs/pause.svg";
   }
-  // document.querySelector(".songinfo").innerHTML =  image;
-  //   const img = document.createElement("img");
-  //  img.src = image;
-
-  //  img.alt = "Image description";
-
-  //  document.querySelector(".songinfo").innerHTML = ;
 
   document.querySelector(".songinfo").innerHTML = `<div class="songinfo-div"> 
   <div> <img style="width : 70px" src="${image}" alt="img description"> </div> 
@@ -41,6 +36,13 @@ const playMusic = (track, name, image, pause = false) => {
 const fetchPlaylist = async (id) => {
   let response = await fetch(`http://localhost:3000/playlist?id=${id}`);
   let { songs } = await response.json();
+  songsarr = songs.map((song) => {
+    return {
+      url: song.downloadUrl[4].link,
+      image: song.image[1].link,
+      name: song.name,
+    };
+  });
   let songUL = document.querySelector(".sg-name").getElementsByTagName("ul")[0];
   songUL.innerHTML = "";
   for (const song of songs) {
@@ -111,6 +113,12 @@ async function main() {
     if (e.keyCode == 32) {
       e.preventDefault();
       play.click();
+    } else if (e.keyCode == 37) {
+      e.preventDefault();
+      previous.click();
+    } else if (e.keyCode == 39) {
+      e.preventDefault();
+      next.click();
     }
   });
 }
@@ -119,12 +127,6 @@ let slider = document.querySelector(".range").getElementsByTagName("input")[0];
 
 slider.oninput = function () {
   currentSong.volume = parseInt(this.value) / 100;
-  //   this.style.background =
-  //     "linear-gradient(to right, #82CFD0 0%, #82CFD0 " +
-  //     value +
-  //     "%, #fff " +
-  //     value +
-  //     "%, white 100%)";
 };
 
 let buttimg = document.querySelector(".vol-icon");
@@ -140,6 +142,23 @@ button.addEventListener("click", () => {
     flag = 0;
     // buttimg.src===oldsrc;
     currentSong.muted = false;
+  }
+});
+
+previous.addEventListener("click", () => {
+  let index = songsarr.map((song) => song.url).indexOf(currentSong.src);
+  if (index - 1 >= 0) {
+    let songtbp = songsarr[index - 1];
+    playMusic(songtbp.url, songtbp.name, songtbp.image);
+  }
+});
+
+next.addEventListener("click", () => {
+  let index = songsarr.map((song) => song.url).indexOf(currentSong.src);
+  console.log(index);
+  if (index + 1 >= length) {
+    let songtbp = songsarr[index + 1];
+    playMusic(songtbp.url, songtbp.name, songtbp.image);
   }
 });
 
