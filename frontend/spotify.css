@@ -1,5 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+:root {
+    --a: 0;
+    --b: 130px;
+}
+
+.card:hover {
+    background-color: #000000;
+    --a: 1;
+    --b: 109px;
+}
+
+.card>* {
+    padding-bottom: 10px;
+}
+
+.circle-g {
+    filter: invert(1);
+    width: 18px !important;
+    padding: 15px 15px 15px 15px !important;
+    border-radius: 50px;
+    background-color: #7bff00;
+    position: absolute;
+    /* top: 107px; */
+    top: var(--b);
+    right: 25px;
+    opacity: var(--a);
+    transition: all .3s ease-out;
+}
+
+.card {
+    height: 19em;
+    width: 160px;
+    background-color: #111111;
+    padding: 13px;
+    font-size: 13px;
+    position: relative;
+    transition: all .1s;
+}
+
 * {
     margin: 0;
     padding: 0px;
@@ -12,12 +51,11 @@ img {
 }
 
 .left {
-    width: 30vw;
-
+    width: 25vw;
 }
 
 .right {
-    width: 70vw;
+    width: 75vw;
     margin: 10px;
     margin-left: 5px;
     position: relative;
@@ -31,7 +69,7 @@ img {
 }
 
 .library {
-    height: 62vh;
+    height: 65vh;
     padding: 3px;
     /* height: 100%; */
 }
@@ -120,33 +158,6 @@ img {
     margin: 10px;
     height: 70vh;
     overflow-y: scroll;
-}
-
-.card {
-    height: 19em;
-    width: 160px;
-    background-color: #111111;
-    padding: 13px;
-    font-size: 13px;
-    position: relative;
-}
-
-.card>* {
-    padding-bottom: 10px;
-}
-
-.circle-g {
-    cursor: pointer;
-    width: 18px !important;
-    padding: 15px 15px 15px 15px !important;
-    border-radius: 50px;
-    background-color: #3aa72c;
-    position: absolute;
-    /* top: 107px; */
-    top: 109px;
-    right: 25px;
-    /* opacity: 0; */
-    transition: all 1s ease-out;
 }
 
 .circle-w {
@@ -247,7 +258,7 @@ img {
 .sg-name {
     margin: 5px;
     margin-bottom: 0px;
-    height: 51vh;
+    height: 56vh;
     overflow-y: scroll;
     border-radius: 3%;
     /* padding: 10px; */
@@ -309,6 +320,7 @@ img {
 }
 
 .songinfo {
+    font-size: larger;
     color: white;
     width: 200px;
     text-align: center;
@@ -374,31 +386,28 @@ img {
 }
 
 input[type="range"] {
-    -webkit-appearance: none;
+    accent-color: #7bff00;
+    filter: invert(1);
     width: 70%;
     margin: 0 10px;
-}
-
-input[type="range"]:focus {
-    outline: none;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
     width: 90%;
     height: 4px;
     cursor: pointer;
-    background: #ebe2e2;
+    color: #12c719;
     border-radius: 15px;
-    border: 1px solid #aaa;
+    border: 0px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     height: 14px;
     width: 14px;
     border-radius: 50%;
-    background: #12c719;
+    color: #12c719;
     cursor: pointer;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     margin-top: -6px;
     /* display: none; */
 }

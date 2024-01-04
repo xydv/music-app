@@ -9,6 +9,8 @@ function secondsToMMSS(seconds) {
   const formattedMinutes = String(minutes).padStart(2, "0");
   const formattedSeconds = String(remainingSeconds).padStart(2, "0");
 
+  if (formattedMinutes == "NaN") return "00:00";
+
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
@@ -129,19 +131,19 @@ slider.oninput = function () {
   currentSong.volume = parseInt(this.value) / 100;
 };
 
-let buttimg = document.querySelector(".vol-icon");
-let flag = 0;
-let button = document.querySelector(".vol-butt");
+let volbutton = document.querySelector(".vol-butt");
+let volicon = document.querySelector(".vol-icon");
 
-button.addEventListener("click", () => {
-  if (flag == 0) {
-    currentSong.muted = true;
-    // buttimg.src===newsrc;
-    flag = 1;
+volbutton.addEventListener("click", () => {
+  console.log(slider.value);
+  if (currentSong.volume) {
+    volicon.src = "/svgs/mute.svg";
+    currentSong.volume = 0;
+    slider.value = 0;
   } else {
-    flag = 0;
-    // buttimg.src===oldsrc;
-    currentSong.muted = false;
+    volicon.src = "/svgs/unmute.svg";
+    currentSong.volume = 1;
+    slider.value = 100;
   }
 });
 
