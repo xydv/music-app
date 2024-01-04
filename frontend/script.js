@@ -1,5 +1,6 @@
 let currentSong = new Audio();
 let inputsong = document.getElementById("songinput");
+let tooltip = document.getElementById("songtooltips");
 let songsarr = [];
 
 function secondsToMMSS(seconds) {
@@ -21,7 +22,6 @@ async function getSongs() {
 }
 
 const playMusic = (track, name, image, pause = false) => {
-  console.log(track, name, image);
   currentSong.src = track;
   if (!pause) {
     currentSong.play();
@@ -164,7 +164,6 @@ let volbutton = document.querySelector(".vol-butt");
 let volicon = document.querySelector(".vol-icon");
 
 volbutton.addEventListener("click", () => {
-  console.log(slider.value);
   if (currentSong.volume) {
     volicon.src = "/svgs/mute.svg";
     currentSong.volume = 0;
@@ -188,30 +187,22 @@ previous.addEventListener("click", () => {
 
 next.addEventListener("click", () => {
   let index = songsarr.map((song) => song.url).indexOf(currentSong.src);
-  console.log(index);
   if (index + 1 >= length) {
     let songtbp = songsarr[index + 1];
     playMusic(songtbp.url, songtbp.name, songtbp.image);
   }
 });
 
-//Add an event on search
-document.querySelector(".search").addEventListener("click", () => {
-  console.log("Search clicked");
-  const input = document.querySelector(".nav-input input");
-  input.style.display =
-    input.style.display === "none" || input.style.display === ""
-      ? "block"
-      : "none";
-});
-
 inputsong.addEventListener("input", async (e) => {
-  if (!e.target.value.trim()) return;
+  if (!e.target.value.trim()) {
+    location.reload();
+    return;
+  }
+  tooltip.innerText = `Search results for ${e.target.value}`;
   let response = await fetch(
     `http://localhost:3000/search?q=${e.target.value}`
   );
   let songs = await response.json();
-  console.log(songs);
   let songUL = document.querySelector("#container");
   songUL.innerHTML = "";
   for (const song of songs) {
