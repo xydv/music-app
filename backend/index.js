@@ -15,10 +15,14 @@ app.get("/home", async ({ res }) => {
 app.get("/search", async (req, res) => {
   let { q } = req.query;
   if (!q) return res.status(404).json({ message: "please enter a query" });
-  let {
-    data: { results },
-  } = await (await fetch(`https://saavn.me/search/songs?query=${q}`)).json();
-  res.json(results);
+  try {
+    let {
+      data: { results },
+    } = await (await fetch(`https://saavn.me/search/songs?query=${q}`)).json();
+    res.json(results);
+  } catch (e) {
+    res.json([]);
+  }
 });
 
 app.get("/playlist", async (req, res) => {
@@ -36,7 +40,7 @@ app.get("/song/:id", async (req, res) => {
   let {
     data: [song],
   } = await (await fetch(`https://saavn.me/songs?id=${id}`)).json();
-  res.json(song);
+  res.json(song || {});
 });
 
 app.listen(3000 || process.env.PORT);

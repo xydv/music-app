@@ -72,7 +72,10 @@ const fetchPlaylist = async (id) => {
 </li>`;
   }
 
-
+  if (!localStorage.getItem("lastSongPlayed")) {
+    play.src = "/svgs/play.svg";
+    document.getElementsByClassName("playnash")[0].click();
+  }
 };
 
 async function main() {
@@ -88,7 +91,7 @@ async function main() {
         </div>`;
   }
 
-  document.getElementsByClassName("circle-g")[0].click()
+  document.getElementsByClassName("circle-g")[0].click();
 
   // Attach an event to play if pause and pause if play
   play.addEventListener("click", () => {
@@ -233,11 +236,12 @@ window.addEventListener("load", () => {
   document.querySelector(".seekbar-circle").style.left =
     (lastTimer / lastSongDuration) * 100 + "%";
 
-  currentSong.currentTime = lastSongDuration * (lastTimer / lastSongDuration);
+  currentSong.currentTime =
+    lastSongDuration * (lastTimer / lastSongDuration) || 0;
 
   play.src = "/svgs/play.svg";
 
-  currentSong.volume = parseInt(localStorage.getItem("volume")) / 100;
+  currentSong.volume = parseInt(localStorage.getItem("volume")) / 100 || 0.5;
   slider.value = localStorage.getItem("volume");
 
   if (localStorage.getItem("volume") == 0) {
